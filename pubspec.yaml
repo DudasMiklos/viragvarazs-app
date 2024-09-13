@@ -1,0 +1,92 @@
+name: viragvarazs
+description: "Virágvarázs project"
+
+publish_to: 'none'
+
+version: 0.0.1+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  forest_logger: ^1.1.1
+  auto_route: ^9.2.2
+  freezed: ^2.5.7
+  freezed_annotation: ^2.4.4
+  chopper: ^8.0.1+1
+  provider: ^6.1.2
+  shared_preferences: ^2.3.2
+  flutter_svg: ^2.0.10+1
+  url_launcher: ^6.3.0
+  form_builder_validators: ^11.0.0
+  device_info_plus: ^10.1.2
+  asset_flow: ^0.0.7
+  fluttertoast: ^8.2.8
+  shimmer_loading_animation: ^0.1.0
+  money_formatter: ^0.0.6
+  cached_network_image: ^3.4.1
+  flutter_native_splash: ^2.4.1
+  package_info_plus: ^8.0.2
+  flutter_multi_select_items: ^0.4.3
+  easy_image_viewer: ^1.5.1
+  flutter_advanced_switch: ^3.1.0
+  http: ^1.2.2
+  image_picker: ^1.1.2
+  permission_handler: ^11.3.1
+  dropdown_button2: ^2.3.9
+  modal_bottom_sheet: ^3.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  auto_route_generator: ^9.0.0
+  build_runner: ^2.4.12
+  flutter_lints: ^4.0.0
+  json_annotation: ^4.9.0
+  json_serializable: ^6.8.0
+  chopper_generator: ^8.0.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/fonts/
+    - assets/images/logos/
+    - assets/icons/
+
+  fonts:
+    - family: Plus-Jakarta-Sans
+      fonts:
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/plus_jakarta_sans/PlusJakartaSans-ExtraBold.ttf
+          weight: 800
+
+flutter_native_splash:
+  color: "#B59A7C"
+  color_dark: "#B59A7C"
+  android_12:
+    color: "#B59A7C"
+    color_dark: "#B59A7C"
+    image: "assets/images/logos/native_splash.png"
+    image_dark: "assets/images/logos/native_splash.png"
+  image: "assets/images/logos/native_splash.png"
+  image_dark: "assets/images/logos/native_splash.png"
+  color_android: "#B59A7C"
+  color_dark_android: "#B59A7C"
+  color_ios: "#B59A7C"
+  color_dark_ios: "#B59A7C"
