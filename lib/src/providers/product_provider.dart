@@ -119,11 +119,12 @@ class ProductProvider extends LoadingInterface {
     }
   }
 
-  Future<Exception?> askForProductNames(String? imageUrl, XFile? image) async {
+  Future<Exception?> askForProductNames(
+      String? imageUrl, XFile? image, String categories) async {
     try {
       isGenerateProductNamesLoading = true;
-      List<String>? response =
-          await ProductRepository.askForProductNames(imageUrl, image);
+      List<String>? response = await ProductRepository.askForProductNames(
+          imageUrl, image, categories);
       Forest.success("Product names: $response");
       generatedNames.addAll(response ?? []);
       isGenerateProductNamesLoading = false;
@@ -135,11 +136,11 @@ class ProductProvider extends LoadingInterface {
   }
 
   Future<Exception?> askForProductDescription(
-      String? imageUrl, XFile? image) async {
+      String? imageUrl, XFile? image, String categories) async {
     try {
       isGenerateProductDescriptionLoading = true;
-      String? response =
-          await ProductRepository.askForProductDescription(imageUrl, image);
+      String? response = await ProductRepository.askForProductDescription(
+          imageUrl, image, categories);
       Forest.success("Product description: $response");
       generatedDescription = response ?? "";
       isGenerateProductDescriptionLoading = false;

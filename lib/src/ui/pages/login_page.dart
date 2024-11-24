@@ -1,6 +1,7 @@
 import 'package:forest_logger/forest_logger.dart';
 import 'package:provider/provider.dart';
 import 'package:viragvarazs/src/providers/authentication_provider.dart';
+import 'package:viragvarazs/src/providers/blog_provider.dart';
 import 'package:viragvarazs/src/providers/category_provider.dart';
 import 'package:viragvarazs/src/providers/product_provider.dart';
 import 'package:viragvarazs/src/resources/assets/asset_flow.dart';
@@ -46,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
           Provider.of<ProductProvider>(context, listen: false).loadBaseData();
           Provider.of<CategoryProvider>(context, listen: false)
               .getAllTotalCategories();
+          Provider.of<BlogProvider>(context, listen: false).getAllPosts();
           MessageHelper.showToast("Sikeres bejelentkezés");
           Forest.success("Login success");
           AutoRouter.of(context).replace(const CategoriesRoute());

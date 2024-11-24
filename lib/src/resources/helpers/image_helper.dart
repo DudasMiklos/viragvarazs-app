@@ -16,6 +16,13 @@ class ImageHelper {
       }
     }
 
+    if (Platform.isIOS) {
+      bool isPermissionGranted = await Permission.photos.isGranted;
+      if (!isPermissionGranted) {
+        await Permission.photos.request();
+      }
+    }
+
     XFile? file = await imagePicker.pickImage(
       source: ImageSource.gallery,
     );

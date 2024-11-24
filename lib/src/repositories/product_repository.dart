@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:chopper/chopper.dart';
 import 'package:forest_logger/forest_logger.dart';
@@ -77,7 +78,6 @@ class ProductRepository {
   static Future<ProductModel?> createProduct(
       ProductModel productModel, XFile image) async {
     String? token = await TokenHandler.getToken();
-    List<int> fileInBytes = await image.readAsBytes();
     var request = http.MultipartRequest(
       'POST',
       Uri.parse(
@@ -120,13 +120,33 @@ class ProductRepository {
       "options": jsonEncode(optionsInMap),
       "categories": categories,
     });
-    request.files.add(
-      http.MultipartFile.fromBytes(
-        'image',
-        fileInBytes,
-        filename: image.path.split("/").last,
-      ),
-    );
+    String extension = image.path.split('.').last.toLowerCase();
+    if (extension == 'heif' || extension == 'heic') {
+      String? jpgPath = ""; //= await HeifConverter.convert(image.path);
+
+      if (jpgPath != null) {
+        File jpgFile = File(jpgPath);
+        List<int> fileInBytes = await jpgFile.readAsBytes();
+        request.files.add(
+          http.MultipartFile.fromBytes(
+            'image',
+            fileInBytes,
+            filename: jpgFile.path.split("/").last,
+          ),
+        );
+      } else {
+        Forest.error('Error: Failed to convert HEIF/HEIC to JPG');
+      }
+    } else {
+      List<int> fileInBytes = await image.readAsBytes();
+      request.files.add(
+        http.MultipartFile.fromBytes(
+          'image',
+          fileInBytes,
+          filename: image.path.split("/").last,
+        ),
+      );
+    }
     http.StreamedResponse response = await request.send();
     final responseString = await response.stream.bytesToString();
     var jsonResponse = jsonDecode(responseString);
@@ -193,14 +213,33 @@ class ProductRepository {
     });
 
     if (image != null) {
-      List<int> fileInBytes = await image.readAsBytes();
-      request.files.add(
-        http.MultipartFile.fromBytes(
-          'image',
-          fileInBytes,
-          filename: image.path.split("/").last,
-        ),
-      );
+      String extension = image.path.split('.').last.toLowerCase();
+      if (extension == 'heif' || extension == 'heic') {
+        String? jpgPath = ""; //await HeifConverter.convert(image.path);
+
+        if (jpgPath != null) {
+          File jpgFile = File(jpgPath);
+          List<int> fileInBytes = await jpgFile.readAsBytes();
+          request.files.add(
+            http.MultipartFile.fromBytes(
+              'image',
+              fileInBytes,
+              filename: jpgFile.path.split("/").last,
+            ),
+          );
+        } else {
+          Forest.error('Error: Failed to convert HEIF/HEIC to JPG');
+        }
+      } else {
+        List<int> fileInBytes = await image.readAsBytes();
+        request.files.add(
+          http.MultipartFile.fromBytes(
+            'image',
+            fileInBytes,
+            filename: image.path.split("/").last,
+          ),
+        );
+      }
     }
 
     http.StreamedResponse response = await request.send();
@@ -218,7 +257,7 @@ class ProductRepository {
   }
 
   static Future<List<String>?> askForProductNames(
-      String? imageUrl, XFile? image) async {
+      String? imageUrl, XFile? image, String categories) async {
     String? token = await TokenHandler.getToken();
     if (imageUrl == "https://placehold.co/300x400.png" && image == null) {
       MessageHelper.showToast("Töltsön fel egy képet először!");
@@ -234,14 +273,33 @@ class ProductRepository {
 
     try {
       if (image != null) {
-        List<int> fileInBytes = await image.readAsBytes();
-        request.files.add(
-          http.MultipartFile.fromBytes(
-            'image',
-            fileInBytes,
-            filename: image.path.split("/").last,
-          ),
-        );
+        String extension = image.path.split('.').last.toLowerCase();
+        if (extension == 'heif' || extension == 'heic') {
+          String? jpgPath = ""; //await HeifConverter.convert(image.path);
+
+          if (jpgPath != null) {
+            File jpgFile = File(jpgPath);
+            List<int> fileInBytes = await jpgFile.readAsBytes();
+            request.files.add(
+              http.MultipartFile.fromBytes(
+                'image',
+                fileInBytes,
+                filename: jpgFile.path.split("/").last,
+              ),
+            );
+          } else {
+            Forest.error('Error: Failed to convert HEIF/HEIC to JPG');
+          }
+        } else {
+          List<int> fileInBytes = await image.readAsBytes();
+          request.files.add(
+            http.MultipartFile.fromBytes(
+              'image',
+              fileInBytes,
+              filename: image.path.split("/").last,
+            ),
+          );
+        }
       }
     } catch (e) {
       Forest.error("Error while adding image to the request: $e");
@@ -252,6 +310,9 @@ class ProductRepository {
         "imageUrl": imageUrl ?? "",
       });
     }
+    request.fields.addAll({
+      "categories": categories,
+    });
     http.StreamedResponse response = await request.send();
 
     final responseString = await response.stream.bytesToString();
@@ -275,7 +336,7 @@ class ProductRepository {
   }
 
   static Future<String?> askForProductDescription(
-      String? imageUrl, XFile? image) async {
+      String? imageUrl, XFile? image, String categories) async {
     String? token = await TokenHandler.getToken();
     if (imageUrl == "https://placehold.co/300x400.png" && image == null) {
       MessageHelper.showToast("Töltsön fel egy képet először!");
@@ -291,14 +352,33 @@ class ProductRepository {
 
     try {
       if (image != null) {
-        List<int> fileInBytes = await image.readAsBytes();
-        request.files.add(
-          http.MultipartFile.fromBytes(
-            'image',
-            fileInBytes,
-            filename: image.path.split("/").last,
-          ),
-        );
+        String extension = image.path.split('.').last.toLowerCase();
+        if (extension == 'heif' || extension == 'heic') {
+          String? jpgPath = ""; //await HeifConverter.convert(image.path);
+
+          if (jpgPath != null) {
+            File jpgFile = File(jpgPath);
+            List<int> fileInBytes = await jpgFile.readAsBytes();
+            request.files.add(
+              http.MultipartFile.fromBytes(
+                'image',
+                fileInBytes,
+                filename: jpgFile.path.split("/").last,
+              ),
+            );
+          } else {
+            Forest.error('Error: Failed to convert HEIF/HEIC to JPG');
+          }
+        } else {
+          List<int> fileInBytes = await image.readAsBytes();
+          request.files.add(
+            http.MultipartFile.fromBytes(
+              'image',
+              fileInBytes,
+              filename: image.path.split("/").last,
+            ),
+          );
+        }
       }
     } catch (e) {
       Forest.error("Error while adding image to the request: $e");
@@ -309,6 +389,9 @@ class ProductRepository {
         "imageUrl": imageUrl ?? "",
       });
     }
+    request.fields.addAll({
+      "categories": categories,
+    });
     http.StreamedResponse response = await request.send();
 
     final responseString = await response.stream.bytesToString();

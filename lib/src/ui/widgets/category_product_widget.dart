@@ -76,22 +76,30 @@ class CategoryProductWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Nem TODO",
+                            productModel.availableOptionCount == 0
+                                ? "Látható (0)"
+                                : "Látható (${productModel.availableOptionCount})",
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
                                 .copyWith(
-                                  color: ApplicationStyle.redColor,
+                                  color: productModel.availableOptionCount == 0
+                                      ? ApplicationStyle.redColor
+                                      : ApplicationStyle.greenColor,
                                   fontSize: 12.5,
                                 ),
                           ),
                           Text(
-                            "RaktáronTD",
+                            productModel.stockOptionCount == 0
+                                ? "Raktáron (0)"
+                                : "Raktáron (${productModel.stockOptionCount})",
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!
                                 .copyWith(
-                                  color: ApplicationStyle.greenColor,
+                                  color: productModel.stockOptionCount == 0
+                                      ? ApplicationStyle.redColor
+                                      : ApplicationStyle.greenColor,
                                   fontSize: 12.5,
                                 ),
                           ),

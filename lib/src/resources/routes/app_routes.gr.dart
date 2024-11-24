@@ -8,23 +8,43 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter/material.dart' as _i9;
-import 'package:viragvarazs/src/models/product/product_model.dart' as _i11;
+import 'package:auto_route/auto_route.dart' as _i9;
+import 'package:flutter/material.dart' as _i10;
+import 'package:viragvarazs/src/models/product/product_model.dart' as _i12;
 import 'package:viragvarazs/src/models/totalCategory/total_category_model.dart'
-    as _i10;
-import 'package:viragvarazs/src/ui/pages/categories_page.dart' as _i1;
-import 'package:viragvarazs/src/ui/pages/category_products_page.dart' as _i2;
-import 'package:viragvarazs/src/ui/pages/create_product_page.dart' as _i3;
-import 'package:viragvarazs/src/ui/pages/login_page.dart' as _i4;
-import 'package:viragvarazs/src/ui/pages/product_page.dart' as _i5;
-import 'package:viragvarazs/src/ui/pages/products_page.dart' as _i6;
-import 'package:viragvarazs/src/ui/pages/splash_page.dart' as _i7;
+    as _i11;
+import 'package:viragvarazs/src/ui/pages/blog_posts_page.dart' as _i1;
+import 'package:viragvarazs/src/ui/pages/categories_page.dart' as _i2;
+import 'package:viragvarazs/src/ui/pages/category_products_page.dart' as _i3;
+import 'package:viragvarazs/src/ui/pages/create_product_page.dart' as _i4;
+import 'package:viragvarazs/src/ui/pages/login_page.dart' as _i5;
+import 'package:viragvarazs/src/ui/pages/product_page.dart' as _i6;
+import 'package:viragvarazs/src/ui/pages/products_page.dart' as _i7;
+import 'package:viragvarazs/src/ui/pages/splash_page.dart' as _i8;
 
 /// generated route for
-/// [_i1.CategoriesPage]
-class CategoriesRoute extends _i8.PageRouteInfo<void> {
-  const CategoriesRoute({List<_i8.PageRouteInfo>? children})
+/// [_i1.BlogPostsPage]
+class BlogPostsRoute extends _i9.PageRouteInfo<void> {
+  const BlogPostsRoute({List<_i9.PageRouteInfo>? children})
+      : super(
+          BlogPostsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BlogPostsRoute';
+
+  static _i9.PageInfo page = _i9.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.BlogPostsPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i2.CategoriesPage]
+class CategoriesRoute extends _i9.PageRouteInfo<void> {
+  const CategoriesRoute({List<_i9.PageRouteInfo>? children})
       : super(
           CategoriesRoute.name,
           initialChildren: children,
@@ -32,22 +52,22 @@ class CategoriesRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'CategoriesRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
-      return const _i1.CategoriesPage();
+      return const _i2.CategoriesPage();
     },
   );
 }
 
 /// generated route for
-/// [_i2.CategoryProductsPage]
+/// [_i3.CategoryProductsPage]
 class CategoryProductsRoute
-    extends _i8.PageRouteInfo<CategoryProductsRouteArgs> {
+    extends _i9.PageRouteInfo<CategoryProductsRouteArgs> {
   CategoryProductsRoute({
-    _i9.Key? key,
-    required _i10.TotalCategoryModel totalCategory,
-    List<_i8.PageRouteInfo>? children,
+    _i10.Key? key,
+    required _i11.TotalCategoryModel totalCategory,
+    List<_i9.PageRouteInfo>? children,
   }) : super(
           CategoryProductsRoute.name,
           args: CategoryProductsRouteArgs(
@@ -59,11 +79,11 @@ class CategoryProductsRoute
 
   static const String name = 'CategoryProductsRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<CategoryProductsRouteArgs>();
-      return _i2.CategoryProductsPage(
+      return _i3.CategoryProductsPage(
         key: args.key,
         totalCategory: args.totalCategory,
       );
@@ -77,9 +97,9 @@ class CategoryProductsRouteArgs {
     required this.totalCategory,
   });
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
-  final _i10.TotalCategoryModel totalCategory;
+  final _i11.TotalCategoryModel totalCategory;
 
   @override
   String toString() {
@@ -88,9 +108,9 @@ class CategoryProductsRouteArgs {
 }
 
 /// generated route for
-/// [_i3.CreateProductPage]
-class CreateProductRoute extends _i8.PageRouteInfo<void> {
-  const CreateProductRoute({List<_i8.PageRouteInfo>? children})
+/// [_i4.CreateProductPage]
+class CreateProductRoute extends _i9.PageRouteInfo<void> {
+  const CreateProductRoute({List<_i9.PageRouteInfo>? children})
       : super(
           CreateProductRoute.name,
           initialChildren: children,
@@ -98,18 +118,18 @@ class CreateProductRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'CreateProductRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
-      return const _i3.CreateProductPage();
+      return const _i4.CreateProductPage();
     },
   );
 }
 
 /// generated route for
-/// [_i4.LoginPage]
-class LoginRoute extends _i8.PageRouteInfo<void> {
-  const LoginRoute({List<_i8.PageRouteInfo>? children})
+/// [_i5.LoginPage]
+class LoginRoute extends _i9.PageRouteInfo<void> {
+  const LoginRoute({List<_i9.PageRouteInfo>? children})
       : super(
           LoginRoute.name,
           initialChildren: children,
@@ -117,21 +137,21 @@ class LoginRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
-      return const _i4.LoginPage();
+      return const _i5.LoginPage();
     },
   );
 }
 
 /// generated route for
-/// [_i5.ProductPage]
-class ProductRoute extends _i8.PageRouteInfo<ProductRouteArgs> {
+/// [_i6.ProductPage]
+class ProductRoute extends _i9.PageRouteInfo<ProductRouteArgs> {
   ProductRoute({
-    _i9.Key? key,
-    required _i11.ProductModel product,
-    List<_i8.PageRouteInfo>? children,
+    _i10.Key? key,
+    required _i12.ProductModel product,
+    List<_i9.PageRouteInfo>? children,
   }) : super(
           ProductRoute.name,
           args: ProductRouteArgs(
@@ -143,11 +163,11 @@ class ProductRoute extends _i8.PageRouteInfo<ProductRouteArgs> {
 
   static const String name = 'ProductRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ProductRouteArgs>();
-      return _i5.ProductPage(
+      return _i6.ProductPage(
         key: args.key,
         product: args.product,
       );
@@ -161,9 +181,9 @@ class ProductRouteArgs {
     required this.product,
   });
 
-  final _i9.Key? key;
+  final _i10.Key? key;
 
-  final _i11.ProductModel product;
+  final _i12.ProductModel product;
 
   @override
   String toString() {
@@ -172,9 +192,9 @@ class ProductRouteArgs {
 }
 
 /// generated route for
-/// [_i6.ProductsPage]
-class ProductsRoute extends _i8.PageRouteInfo<void> {
-  const ProductsRoute({List<_i8.PageRouteInfo>? children})
+/// [_i7.ProductsPage]
+class ProductsRoute extends _i9.PageRouteInfo<void> {
+  const ProductsRoute({List<_i9.PageRouteInfo>? children})
       : super(
           ProductsRoute.name,
           initialChildren: children,
@@ -182,18 +202,18 @@ class ProductsRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'ProductsRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
-      return const _i6.ProductsPage();
+      return const _i7.ProductsPage();
     },
   );
 }
 
 /// generated route for
-/// [_i7.SplashPage]
-class SplashRoute extends _i8.PageRouteInfo<void> {
-  const SplashRoute({List<_i8.PageRouteInfo>? children})
+/// [_i8.SplashPage]
+class SplashRoute extends _i9.PageRouteInfo<void> {
+  const SplashRoute({List<_i9.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -201,10 +221,10 @@ class SplashRoute extends _i8.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static _i8.PageInfo page = _i8.PageInfo(
+  static _i9.PageInfo page = _i9.PageInfo(
     name,
     builder: (data) {
-      return const _i7.SplashPage();
+      return const _i8.SplashPage();
     },
   );
 }

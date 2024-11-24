@@ -1,4 +1,5 @@
 import 'package:viragvarazs/src/providers/authentication_provider.dart';
+import 'package:viragvarazs/src/providers/blog_provider.dart';
 import 'package:viragvarazs/src/providers/category_provider.dart';
 import 'package:viragvarazs/src/providers/product_provider.dart';
 import 'package:viragvarazs/src/providers/theme_provider.dart';
@@ -24,6 +25,7 @@ class _ApplicationState extends State<Application> {
   AuthenticationProvider authenticationProvider = AuthenticationProvider();
   ProductProvider productProvider = ProductProvider();
   CategoryProvider categoryProvider = CategoryProvider();
+  BlogProvider blogProvider = BlogProvider();
   late AppRouter _appRouter;
 
   @override
@@ -60,6 +62,9 @@ class _ApplicationState extends State<Application> {
         ),
         ChangeNotifierProvider(
           create: (context) => categoryProvider,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => blogProvider,
         ),
       ],
       child: ChangeNotifierProvider(

@@ -36,5 +36,9 @@ class AppRouter extends RootStackRouter {
           path: '/product',
           page: ProductRoute.page,
         ),
+        AutoRoute(
+          path: '/blogs-posts',
+          page: BlogPostsRoute.page,
+        ),
       ];
 }

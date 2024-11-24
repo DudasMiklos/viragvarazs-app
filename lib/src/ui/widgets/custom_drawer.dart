@@ -177,23 +177,26 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     CustomDrawerItem(
                       title: "Kategóriák kezelése",
                       onTap: () {
-                        AutoRouter.of(context)
-                            .popAndPush(const CategoriesRoute());
+                        AutoRouter.of(context).popAndPush(
+                          const CategoriesRoute(),
+                        );
                       },
                     ),
                     CustomDrawerItem(
                       title: "Termékek kezelése",
                       onTap: () {
-                        AutoRouter.of(context)
-                            .popAndPush(const ProductsRoute());
+                        AutoRouter.of(context).popAndPush(
+                          const ProductsRoute(),
+                        );
                       },
                     ),
-                    Divider(
-                      color: ApplicationStyle.white.withOpacity(0.4),
-                    ),
                     CustomDrawerItem(
-                      title: "Fleurop számla kiállítása",
-                      onTap: () {},
+                      title: "Posztok kezelése",
+                      onTap: () {
+                        AutoRouter.of(context).popAndPush(
+                          const BlogPostsRoute(),
+                        );
+                      },
                     ),
                   ],
                 ),

@@ -31,13 +31,24 @@ class _ProductsPageState extends State<ProductsPage> {
     filteredProducts = products;
   }
 
+  // This function handles the search/filtering logic
+  void _filterProducts(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        filteredProducts = products;
+      } else {
+        filteredProducts = products
+            .where((product) =>
+                product.name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     products = Provider.of<ProductProvider>(context, listen: true).products;
-    if (products ==
-        Provider.of<ProductProvider>(context, listen: false).products) {
-      filteredProducts = products;
-    }
+
     return Scaffold(
       appBar: CustomAppbar(
         scaffoldKey: scaffoldKey,
@@ -58,17 +69,8 @@ class _ProductsPageState extends State<ProductsPage> {
               child: CustomTextFormField(
                 onSave: (value) {},
                 onChanged: (value) {
-                  setState(() {
-                    if (value == null || value == "") {
-                      filteredProducts = products;
-                    } else {
-                      filteredProducts = products
-                          .where((element) => element.name
-                              .toLowerCase()
-                              .contains(value.toLowerCase()))
-                          .toList();
-                    }
-                  });
+                  _filterProducts(
+                      value ?? ""); // Call filter method on search input change
                 },
                 validators: const [],
                 placeholder: "Keresés...",

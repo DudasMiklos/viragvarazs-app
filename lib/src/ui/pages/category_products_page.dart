@@ -38,7 +38,6 @@ class _CategoryProductsPageState extends State<CategoryProductsPage> {
       appBar: CustomAppbar(
         scaffoldKey: scaffoldKey,
         title: widget.totalCategory.name,
-        onEditTap: () {},
       ),
       key: scaffoldKey,
       drawer: const CustomDrawer(),

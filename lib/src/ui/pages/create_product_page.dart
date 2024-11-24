@@ -372,11 +372,35 @@ class _CreateProductPageState extends State<CreateProductPage> {
                                                 "Töltsön fel egy képet először!");
                                             return;
                                           }
+                                          if (_product.categories == null) {
+                                            MessageHelper.showToast(
+                                                "Válasszon legalább egy kategóriát");
+                                            return;
+                                          }
+                                          if (_product.categories!.isEmpty) {
+                                            MessageHelper.showToast(
+                                                "Válasszon legalább egy kategóriát");
+                                            return;
+                                          }
+                                          String categories = "";
+                                          if (_product.categories != null) {
+                                            if (_product
+                                                .categories!.isNotEmpty) {
+                                              for (var element
+                                                  in _product.categories!) {
+                                                categories += "${element.id},";
+                                              }
+                                            }
+                                          }
+                                          categories = categories.substring(
+                                              0, categories.length - 1);
                                           await Provider.of<ProductProvider>(
                                                   context,
                                                   listen: false)
                                               .askForProductNames(
-                                                  _product.imageUrl, picture)
+                                                  _product.imageUrl,
+                                                  picture,
+                                                  categories)
                                               .then((data) async {
                                             _generatedNames =
                                                 Provider.of<ProductProvider>(
@@ -542,11 +566,41 @@ class _CreateProductPageState extends State<CreateProductPage> {
                                               listen: true)
                                           .isGenerateProductDescriptionLoading,
                                       onTap: () async {
+                                        if (_product.imageUrl ==
+                                                "https://placehold.co/300x400.png" &&
+                                            picture == null) {
+                                          MessageHelper.showToast(
+                                              "Töltsön fel egy képet először!");
+                                          return;
+                                        }
+                                        if (_product.categories == null) {
+                                          MessageHelper.showToast(
+                                              "Válasszon legalább egy kategóriát");
+                                          return;
+                                        }
+                                        if (_product.categories!.isEmpty) {
+                                          MessageHelper.showToast(
+                                              "Válasszon legalább egy kategóriát");
+                                          return;
+                                        }
+                                        String categories = "";
+                                        if (_product.categories != null) {
+                                          if (_product.categories!.isNotEmpty) {
+                                            for (var element
+                                                in _product.categories!) {
+                                              categories += "${element.id},";
+                                            }
+                                          }
+                                        }
+                                        categories = categories.substring(
+                                            0, categories.length - 1);
                                         await Provider.of<ProductProvider>(
                                                 context,
                                                 listen: false)
                                             .askForProductDescription(
-                                                _product.imageUrl, picture)
+                                                _product.imageUrl,
+                                                picture,
+                                                categories)
                                             .then((data) {
                                           setState(() {
                                             _product = _product.copyWith(

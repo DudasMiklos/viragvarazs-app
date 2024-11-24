@@ -34,7 +34,6 @@ class _CategoriesPageState extends State<CategoriesPage> {
       appBar: CustomAppbar(
         scaffoldKey: scaffoldKey,
         title: "Kategóriák",
-        onCreateTap: () {},
       ),
       key: scaffoldKey,
       drawer: const CustomDrawer(),
