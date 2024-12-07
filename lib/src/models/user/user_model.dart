@@ -9,7 +9,7 @@ class UserModel with _$UserModel {
     required int id,
     required String name,
     required String email,
-    @JsonKey(name: 'is_super') required String isSuper,
+    @JsonKey(name: 'is_super') required int isSuper,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

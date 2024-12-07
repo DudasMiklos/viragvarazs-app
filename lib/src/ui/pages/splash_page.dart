@@ -61,7 +61,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
   Future runGoToHome() async {
     await Future.wait([
-      Future.delayed(const Duration(milliseconds: 2000)), //min delay value
+      Future.delayed(const Duration(milliseconds: 4000)), //min delay value
     ]).then(
       (value) => goToHome(context),
     );

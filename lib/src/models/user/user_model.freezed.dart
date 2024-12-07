@@ -24,7 +24,7 @@ mixin _$UserModel {
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_super')
-  String get isSuper => throw _privateConstructorUsedError;
+  int get isSuper => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $UserModelCopyWith<$Res> {
       {int id,
       String name,
       String email,
-      @JsonKey(name: 'is_super') String isSuper});
+      @JsonKey(name: 'is_super') int isSuper});
 }
 
 /// @nodoc
@@ -84,7 +84,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       isSuper: null == isSuper
           ? _value.isSuper
           : isSuper // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ) as $Val);
   }
 }
@@ -101,7 +101,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       {int id,
       String name,
       String email,
-      @JsonKey(name: 'is_super') String isSuper});
+      @JsonKey(name: 'is_super') int isSuper});
 }
 
 /// @nodoc
@@ -138,7 +138,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
       isSuper: null == isSuper
           ? _value.isSuper
           : isSuper // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -163,7 +163,7 @@ class _$UserModelImpl implements _UserModel {
   final String email;
   @override
   @JsonKey(name: 'is_super')
-  final String isSuper;
+  final int isSuper;
 
   @override
   String toString() {
@@ -203,11 +203,10 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   factory _UserModel(
-          {required final int id,
-          required final String name,
-          required final String email,
-          @JsonKey(name: 'is_super') required final String isSuper}) =
-      _$UserModelImpl;
+      {required final int id,
+      required final String name,
+      required final String email,
+      @JsonKey(name: 'is_super') required final int isSuper}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -220,7 +219,7 @@ abstract class _UserModel implements UserModel {
   String get email;
   @override
   @JsonKey(name: 'is_super')
-  String get isSuper;
+  int get isSuper;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

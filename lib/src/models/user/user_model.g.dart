@@ -11,7 +11,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       email: json['email'] as String,
-      isSuper: json['is_super'] as String,
+      isSuper: (json['is_super'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>

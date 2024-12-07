@@ -3,7 +3,7 @@ description: "Virágvarázs project"
 
 publish_to: 'none'
 
-version: 0.0.4+1
+version: 0.0.5+1
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -20,7 +20,7 @@ dependencies:
   chopper: ^8.0.3
   provider: ^6.1.2
   shared_preferences: ^2.3.3
-  flutter_svg: ^2.0.14
+  flutter_svg: ^2.0.15
   url_launcher: ^6.3.1
   form_builder_validators: ^11.0.0
   device_info_plus: ^11.1.1
@@ -39,7 +39,6 @@ dependencies:
   permission_handler: ^11.3.1
   dropdown_button2: ^2.3.9
   modal_bottom_sheet: ^3.0.0
-  #heif_converter: ^1.0.0
 
 dev_dependencies:
   flutter_test:

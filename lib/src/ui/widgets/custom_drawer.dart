@@ -28,7 +28,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
       (PackageInfo packageInfo) {
         setState(
           () {
-            buildVersion = packageInfo.version;
+            buildVersion = packageInfo.version ?? '-';
           },
         );
       },
@@ -146,7 +146,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Szia ${user!.name}!",
+                            "Szia ${user?.name}!",
                             textAlign: TextAlign.start,
                             style: Theme.of(context).textTheme.headlineLarge,
                           ),
